@@ -1,0 +1,364 @@
+MODULE 3 ANSWER 
+
+1.<!DOCTYPE html>
+<html>
+<body>
+  
+ <b><p>Click on the checkbox to show
+           or hide password: </p></b>
+  
+ <b>Password</b>: <input type="password" 
+     value="geeksforgeeks" id="typepass"> 
+  
+ <input type="checkbox" onclick="Toggle()">
+    <b>Show Password</b>
+  
+    <script>
+    // Change the type of input to password or text
+        function Toggle() {
+            var temp = document.getElementById("typepass");
+            if (temp.type === "password") {
+                temp.type = "text";
+            }
+            else {
+                temp.type = "password";
+            }
+        }
+</script>
+</body>
+</html>
+
+2.for (let i = 0; i < 5; i++) {
+  const button = document.createElement("button");
+  button.innerText = i;
+  button.id = 'button-' + i;
+  button.setAttribute('index', i);
+  button.addEventListener("click", buttonClicked(i))
+  buttonsContainer.appendChild(button);
+}
+
+function buttonClicked(index) {  
+  return function() {
+    console.log(index)
+  }
+}
+
+3.HTML
+<div class="header">
+  <a href="#default" class="logo">CompanyLogo</a>
+  <div class="header-right">
+    <a class="active" href="#home">Home</a>
+    <a href="#contact">Contact</a>
+    <a href="#about">About</a>
+  </div>
+</div>
+
+CSS
+
+/* Style the header with a grey background and some padding */
+.header {
+  overflow: hidden;
+  background-color: #f1f1f1;
+  padding: 20px 10px;
+}
+
+/* Style the header links */
+.header a {
+  float: left;
+  color: black;
+  text-align: center;
+  padding: 12px;
+  text-decoration: none;
+  font-size: 18px;
+  line-height: 25px;
+  border-radius: 4px;
+}
+
+/* Style the logo link (notice that we set the same value of line-height and font-size to prevent the header to increase when the font gets bigger */
+.header a.logo {
+  font-size: 25px;
+  font-weight: bold;
+}
+
+/* Change the background color on mouse-over */
+.header a:hover {
+  background-color: #ddd;
+  color: black;
+}
+
+/* Style the active/current link*/
+.header a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+/* Float the link section to the right */
+.header-right {
+  float: right;
+}
+
+/* Add media queries for responsiveness - when the screen is 500px wide or less, stack the links on top of each other */
+@media screen and (max-width: 500px) {
+  .header a {
+    float: none;
+    display: block;
+    text-align: left;
+  }
+  .header-right {
+    float: none;
+  }
+}
+
+4.<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <table border="1" align="center">
+        <tr>
+            <td>Name:</td>
+            <td><input type="text" name="name" id="name" onblur="Check_Data(this,'nameError')" onkeydown="UserCheck(this,'userError')">
+            <span id="nameError"></span>
+            <span id="userError"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><input type="text" name="email" onblur="Check_Data(this,'emailError')" onkeydown="EmailCheck(this,'mailError')">
+            <span id="emailError"></span>
+            <span id="mailError"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Password:</td>
+            <td><input type="password" name="password" id="pwd" onblur="Check_Data(this,'passError')" onkeydown="PassCheck(this,'pwderror')">
+            <span id="passError"></span>
+            <span id="pwderror"></span>
+            </td>
+        </tr>
+        <tr>
+            <td>Mobile:</td>
+            <td><input type="text" name="mobile" onblur="Check_Data(this,'mobileError')" onkeydown="MobileCheck(this,'mobilechk')">
+            <span id="mobileError"></span>
+            <span id="mobilechk"></span>
+            </td>
+        </tr>
+        <tr><td colspan="2" align="center"><input type="submit" name="submit"></td></tr>
+    </table>
+</body>
+</html>
+<script>
+    function Check_Data(e,spnid)
+    {
+        if(e.value == "")
+        {
+            document.getElementById(spnid).style.color="red";
+            document.getElementById(spnid).innerText = "Please Enter Data!";
+            return false;
+        }
+        else{
+            document.getElementById(spnid).innerText = "";
+            return true;
+        }
+    }
+    function UserCheck(e,spnid)
+    {
+        var name = /^[a-zA-Z]+$/
+        if(name.test(e.value))
+        {
+            document.getElementById(spnid).innerText = "";
+            return true;
+        }
+        else{
+            document.getElementById(spnid).style.color="red";
+            document.getElementById(spnid).innerText = "Please Enter only Characters!";
+            return false;
+        }
+    }
+    function EmailCheck(e,spnid)
+    {
+       
+        var email = /^([a-z0-9.-_])+@+([a-z.-_])+.+([a-z]{3})$/;
+        if(email.test(e.value))
+        {
+            document.getElementById(spnid).innerText = "";
+            return true;
+        }
+        else{
+            document.getElementById(spnid).style.color="red";
+            document.getElementById(spnid).innerText = "Please Enter valod Email!";
+            return false;
+        }
+    }
+    function PassCheck(e,spnid)
+    {
+        var pwd = /^([a-zA-Z0-9]){3,5}$/
+        
+        if(pwd.test(e.value))
+        {
+            document.getElementById(spnid).innerText = "";
+            return true;
+        }
+        else{
+            document.getElementById(spnid).style.color="red";
+            document.getElementById(spnid).innerText = "Please Enter min 3 & mx 5 chracters!";
+            return false;
+        }
+    }
+    function MobileCheck(e,spnid)
+    {
+        var mobile= /^([0-9]){10}$/
+        if(mobile.test(e.value))
+        {
+            document.getElementById(spnid).innerText = "";
+            return true;
+        }
+        else{
+            document.getElementById(spnid).style.color="red";
+            document.getElementById(spnid).innerText = "Please Enter valid Mobile!";
+            return false;
+        }
+    }
+</script>
+
+
+5.   HTML
+<!-- Trigger/Open The Modal -->
+<button id="myBtn">Open Modal</button>
+
+<!-- The Modal -->
+<div id="myModal" class="modal">
+
+  <!-- Modal content -->
+  <div class="modal-content">
+    <span class="close">&times;</span>
+    <p>Some text in the Modal..</p>
+  </div>
+
+</div>
+
+    CSS
+/* The Modal (background) */
+.modal {
+  display: none; /* Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 1; /* Sit on top */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0,0,0); /* Fallback color */
+  background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+
+/* Modal Content/Box */
+.modal-content {
+  background-color: #fefefe;
+  margin: 15% auto; /* 15% from the top and centered */
+  padding: 20px;
+  border: 1px solid #888;
+  width: 80%; /* Could be more or less, depending on screen size */
+}
+
+/* The Close Button */
+.close {
+  color: #aaa;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.close:hover,
+.close:focus {
+  color: black;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+
+
+      JAVA SCRIPT
+
+// Get the modal
+var modal = document.getElementById("myModal");
+
+// Get the button that opens the modal
+var btn = document.getElementById("myBtn");
+
+// Get the <span> element that closes the modal
+var span = document.getElementsByClassName("close")[0];
+
+// When the user clicks on the button, open the modal
+btn.onclick = function() {
+  modal.style.display = "block";
+}
+
+// When the user clicks on <span> (x), close the modal
+span.onclick = function() {
+  modal.style.display = "none";
+}
+
+// When the user clicks anywhere outside of the modal, close it
+window.onclick = function(event) {
+  if (event.target == modal) {
+    modal.style.display = "none";
+  }
+}
+
+
+
+6.  import Slick from 'slick-carousel';
+
+class {
+  onMount() {
+    this.slick = new Slick(this.el);
+  }
+}
+
+<div>
+  <div>your content</div>
+  <div>your content</div>
+  <div>your content</div>
+</div>
+
+import $ from 'jquery'
+
+class {
+  onMount() {
+    $('.myElement', this.el).hide();
+  }
+}
+
+<div>
+  <div.myElement></div>
+</div>
+
+
+7.$(".ml-block-form").submit(function(){
+    var vals = $(this).serialize();
+
+    $.ajax({
+        url: "postpage.php",  
+        method: "POST",
+        data: vals,
+        success: function(data) {
+            $("#formsubmit").val("Thank you!");
+        }
+    });
+
+    return false; // prevent from submit
+});
+
+<form class="ml-block-form" action="" data-code="myownID" method="post">
+    <input id="mainval" type="email" name="fields[email]" placeholder="Email*">
+    <input id="hiddenval" name="ml-submit" value="1" />
+    <input id="formsubmit" type="submit" value="Get Updates!"/>
+</form>
+
+
+

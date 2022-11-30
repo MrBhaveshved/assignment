@@ -1,0 +1,99 @@
+MODULE 1 ((Introduction and Code Quality)
+
+1.● Write a program to Show an alert
+ANS:  <script>
+  function showAlert() {
+    alert ("Hello world!");
+  }
+  </script>
+2.What will be the result for these expressions?
+
+1.5>4
+ANS: 
+<script>
+let x = 5;
+document.getElementById("demo").innerHTML = (x > 8);
+</script>
+
+2."apple" > "pineapple"
+ANS: <script>
+let x = 5;
+document.getElementById("demo").innerHTML = (x == 8);
+</script>
+
+3."2" > "12"
+ANS:<script>
+let x = 2;
+document.getElementById("demo").innerHTML = (x == 12);
+</script>
+
+4.undefined == null
+ANS: <script>
+let x = 5;
+document.getElementById("demo").innerHTML = (x == 5);
+</script>
+
+6. null == "\n0\n"
+ANS:<script>
+let x = 5;
+document.getElementById("demo").innerHTML = (x === 5);
+</script>
+
+3.Will alert be shown?
+if ("0") { alert( 'Hello'); }
+
+ANS: <script>
+  function showAlert() {
+    alert ("Hello world!");
+  }
+  </script>
+
+4.● What is the code below going to output? alert( null || 2 || undefined );
+
+ANS:alert( null || 2 || undefined );
+
+5.The following function returns true if the parameter age is greater than
+18. Otherwise it asks for a confirmation and returns its result:
+function
+checkAge(age)
+{
+if (age> 18) { return true; }
+else {
+// ...return confirm (‘did parents allow you?');
+ }
+ }
+
+ANS:function checkAge(age) {
+  if (age > 18) {
+    return true;
+  } else {
+    return confirm('Did parents allow you?');
+  }
+}
+
+6.Replace Function Expressions with arrow functions in the code below:
+Function
+ask(question, yes, no)
+{ if (confirm(question))yes();
+else
+no();
+}
+ask("Do you agree?", function()
+{ alert("You agreed."); },
+function() {
+alert("You canceled the execution."); }
+ }
+
+ANS: function ask(question, yes, no) {
+  if (confirm(question)) yes();
+  else no();
+}
+
+ask(
+  "Do you agree?",
+  () => alert("You agreed."),
+  () => alert("You canceled the execution.")
+);
+
+
+

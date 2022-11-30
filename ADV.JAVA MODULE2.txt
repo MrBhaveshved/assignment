@@ -1,0 +1,75 @@
+MODULE 2 ANSWER
+
+1.let user = {};
+user.name = "John";
+user.surname = "Smith";
+user.name = "Pete";
+delete user.name;
+
+
+2let john = { name: "John", surname: "Smith", id: 1 };
+let pete = { name: "Pete", surname: "Hunt", id: 2 };
+let mary = { name: "Mary", surname: "Key", id: 3 };
+
+let users = [ john, pete, mary ];
+
+let usersMapped = users.map(user => ({
+  fullName: `${user.name} ${user.surname}`,
+  id: user.id
+}));
+
+/*
+usersMapped = [
+  { fullName: "John Smith", id: 1 },
+  { fullName: "Pete Hunt", id: 2 },
+  { fullName: "Mary Key", id: 3 }
+]
+*/
+
+alert( usersMapped[0].id ); // 1
+alert( usersMapped[0].fullName ); // John Smith
+
+3.function sumSalaries(salaries) {
+
+  let sum = 0;
+  for (let salary of Object.values(salaries)) {
+    sum += salary;
+  }
+
+  return sum; // 650
+}
+
+let salaries = {
+  "John": 100,
+  "Pete": 300,
+  "Mary": 250
+};
+
+alert( sumSalaries(salaries) ); // 650
+
+OR
+
+// reduce loops over array of salaries,
+// adding them up
+// and returns the result
+function sumSalaries(salaries) {
+  return Object.values(salaries).reduce((a, b) => a + b, 0) // 650
+}
+
+4.let user = {
+  name: "John",
+  years: 30
+};
+
+let {name, years: age, isAdmin = false} = user;
+
+alert( name ); // John
+alert( age ); // 30
+alert( isAdmin ); // false
+
+5.let user = {
+  name: "John Smith",
+  age: 35
+};
+
+let user2 = JSON.parse(JSON.stringify(user));
