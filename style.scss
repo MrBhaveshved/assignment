@@ -1,0 +1,354 @@
+@import "susy";
+@include border-box-sizing;
+
+$light-grey: #dddddd;
+$lighter-grey: #f4f4f4;
+$dark-grey: #999999;
+$dark-blue: #000066;
+
+$susy: (
+  columns: 16,
+  debug: (
+      image: show,
+      output: overlay,
+    )
+  );
+
+#wrapper {
+  @include container;
+  background-color: $lighter-grey;
+}
+
+#content {
+  @include span(12);
+  @include isolate(3);
+  background-color: $lighter-grey;
+
+  @media only screen and (max-width: 43em) {
+    @include span(16);
+    @include isolate(0);
+  }
+}
+
+main[role="main"] {
+  padding: 20px;
+}
+
+.inner-footer{
+  @include span(12);
+  @include isolate(3);
+  float: none;
+
+  @media only screen and (max-width: 43em) {
+    @include span(16);
+    @include isolate(0);
+  }
+}
+
+.header {
+	padding: 20px 20px 0;
+}
+.header h1 a {
+  display: block;
+	background: url(http://i66.tinypic.com/24mc1mt.jpg) 0 0 no-repeat;
+    width: 100px;
+    height: 48px;
+	  text-indent: -1000px;
+}
+
+.footer {
+	clear: both;
+	background-color: $dark-grey;
+
+	.inner-footer {
+		font-family: "Droid Sans", serif;
+		font-size: 0.75em;
+		color: #fff;
+		padding: 20px;
+	}
+}
+
+body {
+	font-family: 'Droid Serif', serif;
+	font-size: 100%;
+}
+
+h2 {
+	font-size: 1.875em;
+	font-weight: bold;
+}
+
+strong {
+	font-weight: bold;
+}
+
+.fa-trash-o {
+	font-size: 1.5em;
+	cursor: pointer;
+	color: $dark-blue;
+}
+
+.fa-plus,
+.fa-minus {
+	font-size: 0.6em;
+	color: #fff;
+	padding: 5px;
+	background-color: #999;
+}
+
+
+button {
+	&.buy-now {
+		border-radius: 10px;
+		-webkit-border-radius: 10px;
+		padding: 10px;
+		background-color: $dark-blue;
+		color: #fff;
+		font-family: "Droid Sans",sans-serif;
+		font-size: 1.5em;
+		font-weight: bold;
+
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 490px) {
+
+	button.buy-now {
+		font-size: 0.7em;
+	}
+}
+
+@media only screen and (min-width: 490px) and (max-width: 860px) {
+	button.buy-now {
+		font-size: 0.8em;
+	}
+}
+
+@media only screen and (min-width: 860px) and (max-width: 1200px)  {
+	button.buy-now {
+		font-size: 1.2em;
+	}
+
+}
+
+table.basket-tbl,
+table.result-tbl {
+	width: 100%;
+	margin-top: 40px;
+
+	tr {
+		&:nth-child(even) {
+	    	background-color: $light-grey;
+
+		    input {
+		    	background-color: $light-grey;
+		    }
+	    }
+
+	   &.tbl-foot {
+		   	background-color: $lighter-grey !important;
+
+		   	input {
+		       	background-color: $lighter-grey;
+		    }
+	   }
+
+	}
+	
+
+	th {
+		border-bottom: 2px solid #000000;
+		padding: 10px 10px 0;
+		text-align: left;
+		width: 20%;
+
+		&:first-child {
+			width: 35%;
+		}
+
+		&:last-child {
+			width: 5%;
+			background-color: $lighter-grey;
+			border-bottom: none;
+		}
+	}
+
+	td {
+		padding: 10px;
+		text-align: left;
+
+		&:last-child {
+			background-color: $lighter-grey;
+		}
+
+		input {
+			width: 80%;
+			float: left;
+			background-color: $lighter-grey;
+			border: none;
+
+			&.qty {
+				width: 30%;
+				background-color: #ffffff;
+				border: 1px solid $dark-grey;
+				height: 42px;
+				margin-right: 2%;
+				float: left;
+				text-align: right;
+				padding-right: 5px;
+			}
+		}
+	}
+
+	.outer-button {
+		width: 68%;
+		float: right;
+		margin-top: -2px;
+	}
+
+	.currency:before {
+		content: "£";
+		float: left;
+		margin-top: 1px;
+	}
+}
+
+table.result-tbl {
+	tr {
+		&:nth-child(3) {
+			font-weight: bold;
+		}
+
+		td {
+			&:first-child {
+				width: 75%;
+			}
+		}
+	}
+}
+
+/* ------- Responsive Table --------- */
+
+@media only screen and (max-width: 43em) {
+
+  table.basket-tbl {
+  	margin-top: 0;
+  	font-size: 0.8em;
+
+  	.outer-button {
+  		margin-top: 0;
+  	}
+
+  }
+
+  table.result-tbl {
+  	margin-top: 0;
+  }
+
+  table.basket-tbl thead {
+	display: none; 
+  }
+
+  table.display th,
+  table.display td{
+    padding: .5em;
+  }
+    
+  table.basket-tbl td:nth-child(1):before {
+    content: 'Product';
+  }
+  table.basket-tbl td:nth-child(2):before {
+    content: 'Price';
+  }
+  table.basket-tbl td:nth-child(3):before {
+    content: 'Qty';
+  }
+  table.basket-tbl td:nth-child(4):before {
+    content: 'Cost';
+  }
+  table.basket-tbl td:nth-child(5):before {
+    content: 'Remove';
+  }
+
+  table.basket-tbl td:nth-child(1),
+  table.basket-tbl td:nth-child(2),
+  table.basket-tbl td:nth-child(5) {
+  	padding-left: 25%;
+  	width: auto;
+   	height: 45px;
+  }
+
+  table.basket-tbl td:nth-child(3),
+  table.basket-tbl td:nth-child(4) {
+    padding-left: 25%;
+    width: auto;
+    height: 65px;
+  }
+
+  table.basket-tbl td:nth-child(1):before,
+  table.basket-tbl td:nth-child(2):before,
+  table.basket-tbl td:nth-child(3):before,
+  table.basket-tbl td:nth-child(4):before,
+  table.basket-tbl td:nth-child(5):before {
+    position: absolute;
+    left: .5em;
+    font-weight: bold;
+  }
+  
+	table.basket-tbl tr,
+	table.basket-tbl td {
+	    display: block;
+	}
+
+	table.basket-tbl tr {
+	    position: relative;
+	    margin-bottom: 1em;
+	    border: 1px solid $dark-grey;
+	}
+
+	table.basket-tbl td {
+	    border-top: none;
+	}
+
+	table.basket-tbl td.product {
+	    background: $dark-grey;
+	    border-top: 1px solid #B3BFAA;
+	}
+
+	table.basket-tbl td:nth-child(5) {
+		border-top: 1px solid $dark-grey;
+	}
+
+	table.basket-tbl tr {
+		&:nth-child(even) {
+
+			td:nth-child(5) {
+					background-color: $light-grey;
+				}
+
+		}
+	}
+
+	table.basket-tbl td:nth-child(5):before {
+		font-weight: normal;
+	}
+
+	.fa-trash-o {
+		position: absolute;
+		right: 20px;
+	}
+}
+
+@media only screen and (min-width: 320px) and (max-width: 460px) {
+		table.result-tbl {
+			tr {
+				td {
+					&:first-child {
+						width: 55%;
+					}
+				}
+			}
+		}		
+}
+
+
